@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratório de Protocolos Emergentes</title>
+<style>
+:root {
+  --bg: #0b1020;
+  --card: #151e33;
+  --text: #eef4ff;
+  --muted: #a9b8d0;
+  --green: #36e0a1;
+  --blue: #59b8ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+header {
+  padding: 45px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #13284a, #087d72);
+}
+header h1 { font-size: clamp(28px, 5vw, 44px); }
+header p { color: #d8fff4; }
+main { max-width: 1050px; margin: auto; padding: 22px; }
+nav {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin: 20px 0;
+}
+nav a, button {
+  border: 0; border-radius: 9px; padding: 11px 16px;
+  background: var(--green); color: #06251c;
+  font-weight: bold; cursor: pointer; text-decoration: none;
+}
+section, .card {
+  background: var(--card); border: 1px solid #2a3957;
+  padding: 22px; border-radius: 15px; margin: 18px 0;
+}
+h2 { color: var(--green); }
+h3 { color: var(--blue); }
+.muted { color: var(--muted); }
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+}
+.flow {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  align-items: center; margin: 18px 0;
+}
+.node {
+  padding: 14px; border: 1px solid var(--blue);
+  border-radius: 10px; text-align: center; flex: 1;
+  min-width: 120px; background: #101a2d;
+}
+.arrow { color: var(--green); font-size: 24px; }
+.status {
+  background: #0a1425; border-radius: 10px;
+  padding: 14px; margin-top: 15px; min-height: 55px;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px; border: 1px solid #35435d; text-align: left; }
+th { background: #20314b; }
+footer { text-align: center; color: var(--muted); padding: 25px; }
+.pulse { animation: pulse 1.5s infinite; }
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 #36e0a133; }
+  50% { box-shadow: 0 0 18px 4px #36e0a155; }
+}
+@media(max-width:600px) {
+  main { padding: 12px; }
+  section, .card { padding: 16px; }
+  table { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Laboratório de Protocolos Emergentes</h1>
+  <p>5G • QUIC • MQTT • CoAP • Padronização de Redes</p>
+  <p>Projecto educativo interactivo</p>
+</header>
+
+<main>
+<nav>
+  <a href="#introducao">Introdução</a>
+  <a href="#5g">5G</a>
+  <a href="#quic">QUIC</a>
+  <a href="#iot">IoT</a>
+  <a href="#normas">Normas</a>
+  <a href="#comparacao">Comparação</a>
+</nav>
+
+<section id="introducao">
+<h2>1. Introdução</h2>
+<p>Os protocolos de comunicação definem as regras utilizadas pelos dispositivos
+para trocar informações numa rede. Os protocolos emergentes procuram melhorar
+a velocidade, a segurança, a eficiência e a ligação entre equipamentos.</p>
+<div class="grid">
+  <div class="card">
+    <h3>5G</h3>
+    <p>Rede móvel de quinta geração, com elevada capacidade e baixa latência.</p>
+  </div>
+  <div class="card">
+    <h3>QUIC</h3>
+    <p>Protocolo de transporte que funciona sobre UDP e integra mecanismos de segurança.</p>
+  </div>
+  <div class="card">
+    <h3>IoT</h3>
+    <p>Protocolos como MQTT e CoAP permitem a comunicação de dispositivos inteligentes.</p>
+  </div>
+</div>
+</section>
+
+<section id="5g">
+<h2>2. Simulação prática do 5G</h2>
+<p>O 5G permite que um dispositivo móvel comunique com a rede e aceda a serviços
+como videochamadas, jogos online e aplicações industriais.</p>
+<div class="flow">
+  <div class="node">📱<br>Telemóvel</div>
+  <span class="arrow">→</span>
+  <div class="node">📡<br>Antena 5G</div>
+  <span class="arrow">→</span>
+  <div class="node">🌐<br>Rede e servidor</div>
+</div>
+<button onclick="simular5G()">Simular ligação 5G</button>
+<div id="resultado5g" class="status">Clica no botão para iniciar a simulação.</div>
+</section>
+
+<section id="quic">
+<h2>3. Simulação prática do QUIC</h2>
+<p>O QUIC é utilizado pelo HTTP/3. Foi concebido para reduzir atrasos na ligação
+e facilitar ligações seguras. Funciona sobre UDP.</p>
+<div class="flow">
+  <div class="node">💻<br>Cliente</div>
+  <span class="arrow">⇄</span>
+  <div class="node">🔐<br>QUIC + segurança</div>
+  <span class="arrow">⇄</span>
+  <div class="node">🖥️<br>Servidor</div>
+</div>
+<button onclick="simularQUIC()">Simular pedido HTTP/3</button>
+<div id="resultadoquic" class="status">Aguardando simulação.</div>
+</section>
+
+<section id="iot">
+<h2>4. Protocolos para Internet das Coisas (IoT)</h2>
+<div class="grid">
+  <div class="card">
+    <h3>MQTT</h3>
+    <p>Utiliza o modelo publicar/subscrever através de um broker. É útil em sensores,
+    monitorização e automação.</p>
+    <div class="flow">
+      <div class="node">Sensor</div><span class="arrow">→</span>
+      <div class="node">Broker</div><span class="arrow">→</span>
+      <div class="node">Aplicação</div>
+    </div>
+    <button onclick="simularMQTT()">Testar MQTT</button>
+    <div id="resultadomqtt" class="status">Pronto para testar.</div>
+  </div>
+  <div class="card">
+    <h3>CoAP</h3>
+    <p>Protocolo leve, concebido para dispositivos limitados. Utiliza um modelo
+    semelhante ao pedido/resposta da Web e normalmente funciona sobre UDP.</p>
+    <div class="flow">
+      <div class="node">Sensor</div><span class="arrow">→</span>
+      <div class="node">Pedido CoAP</div><span class="arrow">→</span>
+      <div class="node">Resposta</div>
+    </div>
+    <button onclick="simularCoAP()">Testar CoAP</button>
+    <div id="resultadocoap" class="status">Pronto para testar.</div>
+  </div>
+</div>
+</section>
+
+<section id="normas">
+<h2>5. Importância da padronização</h2>
+<p>As normas permitem que equipamentos e programas de fabricantes diferentes
+comuniquem utilizando regras compatíveis.</p>
+<div class="grid">
+  <div class="card">
+    <h3>IETF</h3>
+    <p>Desenvolve padrões para a Internet, incluindo protocolos como QUIC e HTTP.</p>
+  </div>
+  <div class="card">
+    <h3>IEEE</h3>
+    <p>Desenvolve normas técnicas para redes e outras tecnologias, como Ethernet (IEEE 802.3)
+    e Wi-Fi (família IEEE 802.11).</p>
+  </div>
+  <div class="card">
+    <h3>ITU</h3>
+    <p>Organismo das Nações Unidas que coordena normas internacionais de telecomunicações,
+    incluindo recomendações relacionadas às redes móveis.</p>
+  </div>
+</div>
+<p><strong>Exemplo:</strong> sem normas comuns, dois dispositivos poderiam utilizar
+regras incompatíveis e não conseguir comunicar correctamente.</p>
+</section>
+
+<section id="comparacao">
+<h2>6. Comparação e escolha</h2>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr><th>Tecnologia</th><th>Utilização</th><th>Vantagem</th><th>Limitação</th></tr>
+</thead>
+<tbody>
+<tr><td>5G</td><td>Redes móveis</td><td>Capacidade e baixa latência</td><td>Exige cobertura e infraestrutura</td></tr>
+<tr><td>QUIC</td><td>Comunicação Web</td><td>Ligação segura e redução de atrasos</td><td>Depende do suporte dos sistemas</td></tr>
+<tr><td>MQTT</td><td>Sensores e IoT</td><td>Mensagens leves</td><td>Normalmente requer um broker</td></tr>
+<tr><td>CoAP</td><td>Dispositivos limitados</td><td>Comunicação leve</td><td>Exige atenção à segurança e à rede</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Escolha uma situação prática</h3>
+<label for="cenario">Qual é a aplicação?</label><br><br>
+<select id="cenario" style="padding:10px;width:100%;border-radius:8px">
+<option value="5g">Ligar dispositivos móveis numa cidade</option>
+<option value="quic">Carregar aplicações Web com menor atraso</option>
+<option value="mqtt">Receber leituras de vários sensores</option>
+<option value="coap">Controlar um sensor com poucos recursos</option>
+</select><br><br>
+<button onclick="escolherProtocolo()">Ver recomendação</button>
+<div id="recomendacao" class="status">Escolhe uma situação e pede a recomendação.</div>
+</section>
+
+<section>
+<h2>7. Conclusão</h2>
+<p>O 5G, o QUIC, o MQTT e o CoAP respondem a necessidades diferentes de comunicação.
+A escolha depende da aplicação, dos recursos disponíveis, da segurança, da latência
+e da infraestrutura. A padronização promovida por organismos como IETF, IEEE e ITU
+é fundamental para a interoperabilidade e a evolução das redes.</p>
+<p class="muted">Nota: estas demonstrações são simulações educativas no navegador.
+Não estabelecem ligações reais a uma rede 5G, a um servidor QUIC ou a dispositivos IoT.</p>
+</section>
+</main>
+
+<footer>
+Laboratório de Redes • Protocolos Emergentes • Projecto académico
+</footer>
+
+<script>
+function escrever(id, mensagem) {
+  document.getElementById(id).textContent = mensagem;
+}
+
+function simular5G() {
+  escrever("resultado5g", "A iniciar ligação...");
+  setTimeout(() => {
+    escrever("resultado5g",
+      "1. O telemóvel procura a rede. 2. A antena estabelece a ligação. " +
+      "3. A rede encaminha os dados para o servidor. Simulação concluída!");
+  }, 700);
+}
+
+function simularQUIC() {
+  escrever("resultadoquic", "A preparar pedido HTTP/3...");
+  setTimeout(() => {
+    escrever("resultadoquic",
+      "O cliente inicia uma ligação QUIC, negocia a segurança e envia um pedido. " +
+      "O servidor responde. Esta é uma representação simplificada do processo.");
+  }, 700);
+}
+
+function simularMQTT() {
+  escrever("resultadomqtt", "O sensor publica uma mensagem...");
+  setTimeout(() => {
+    escrever("resultadomqtt",
+      "Tópico: casa/temperatura | Mensagem: 25 °C | " +
+      "O broker distribui a mensagem aos clientes subscritos.");
+  }, 700);
+}
+
+function simularCoAP() {
+  escrever("resultadocoap", "O dispositivo envia um pedido GET...");
+  setTimeout(() => {
+    escrever("resultadocoap",
+      "Pedido: GET /temperatura | Resposta simulada: 2.05 Content | " +
+      "Temperatura: 25 °C. Nenhum sensor real foi contactado.");
+  }, 700);
+}
+
+function escolherProtocolo() {
+  const escolha = document.getElementById("cenario").value;
+  const respostas = {
+    "5g": "Recomendação: 5G para conectividade móvel de alta capacidade, quando existe cobertura adequada.",
+    "quic": "Recomendação: QUIC com HTTP/3, se cliente e servidor suportarem esta tecnologia.",
+    "mqtt": "Recomendação: MQTT para recolher e distribuir mensagens de vários sensores através de um broker.",
+    "coap": "Recomendação: CoAP para comunicação leve com dispositivos limitados, avaliando a segurança necessária."
+  };
+  escrever("recomendacao", respostas[escolha]);
+}
+</script>
+</body>
+</html>
